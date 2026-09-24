@@ -5,12 +5,16 @@ def array_reverse(numbers):
 
     while first < last:
 
-        print("\nFirst index:", first)
-        print("Last index:", last)
+        print(f"""
+        First index: {first}
+        Last index: {last}
 
-        print("Before swapping:", numbers)
+        Before swapping: {numbers}
 
-        print("Swapping", numbers[first], "and", numbers[last])
+        Swapping {numbers[first]} and {numbers[last]}
+        """)
+
+
 
         temp = numbers[first]
         numbers[first] = numbers[last]
