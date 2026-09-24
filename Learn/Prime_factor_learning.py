@@ -4,14 +4,17 @@ def prime_factors(n):
 
     i = 2
 
-    print("\nStarting Prime Factorization")
-    print("Number entered:", n)
+    print(f"""\nStarting Prime Factorization")
+    print("Number entered:", n""")
 
     while n != 1:
 
-        print("\n-----------------------------")
-        print("Number being checked:", n)
-        print("Factor being taken:", i)
+        print(f"""
+        -----------------------------
+        Number being checked: {n}
+        Factor being taken: {i}
+        -----------------------------
+        """)
 
         if n % i == 0:
 
@@ -19,13 +22,18 @@ def prime_factors(n):
 
             result = n // i
 
-            print("Division:", n, "/", i)
-            print("Result:", result)
+            print(f"""  
+            --->Division: {n} / {i}
+
+            ---> Result: {result}
+            """)
 
             Factors.append(i)
 
-            print("Factor stored:", i)
-            print("Factors so far:", Factors)
+            print(f"""
+            --->Factor stored: {i}
+            --->Factors so far: {Factors}
+            """)
 
             n = result
 
@@ -42,6 +50,7 @@ def prime_factors(n):
         input("\nPress Enter to continue...")
 
 
-    print("\n=============================")
-    print("Prime Factors:", Factors)
-    print("=============================")
+    print(f"""
+    x-x-x-x-x-x-x-x-x-x-x-x-x-x-x")
+    Prime Factors: {Factors}
+    print("-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x""")
