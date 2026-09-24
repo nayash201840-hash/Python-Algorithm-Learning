@@ -1,19 +1,24 @@
 def count_occurrences(numbers, search_element):
 
     count = 0
+    num=numbers
+    find=search_element
 
-    print("\nStarting search...")
-    print("Element to search:", search_element)
-    print("Starting count:", count)
+
+    print("""
+    Element to search: {find}""")
 
     for i in range(len(numbers)):
 
-        print("\n-----------------------------")
-        print("Index:", i)
-        print("Element at this index:", numbers[i])
-        print("Searching for:", search_element)
+       
+        print("""
+        Index: {i}
+        Element at this index: {numbers[i]}
+        Searching for: {find}
+        """)
+        
 
-        if numbers[i] == search_element:
+        if numbers[i] == find:
 
             count = count + 1
 
@@ -29,9 +34,11 @@ def count_occurrences(numbers, search_element):
 
         input("\nPress Enter to continue...")
 
-    print("\n-----------------------------")
-    print("Search completed.")
-    print("Element:", search_element)
-    print("Number of occurrences:", count)
+    
+    print('''
+    Search completed
+
+    Element: {find}
+    Number of times: {count}''')
 
     return count
