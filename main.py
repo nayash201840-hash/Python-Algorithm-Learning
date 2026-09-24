@@ -1,3 +1,4 @@
+```python
 from Learn.gcd_learning_mod import gcd_learning
 from Learn.Prime_number_learning import check_prime
 from Learn.Fibonic_series_learning import fibonacci_series
@@ -8,22 +9,7 @@ from Learn.Kth_smallest import kth_smallest
 from Learn.converter_learning import converter
 
 
-# Taking number input
-def get_number(message):
-    while True:
-        number = input(message)
-
-        if number == "":
-            print("Please enter something.")
-            continue
-
-        number = int(number)
-
-        return number
-
-
-# Taking array input
-def get_array():
+def list_of_values():
     while True:
         values = input("Enter numbers separated by spaces: ")
 
@@ -36,51 +22,143 @@ def get_array():
         return numbers
 
 
+def option_input(message):
+    while True:
+        number = input(message)
+
+        if number == "":
+            print("Please enter something.")
+            continue
+
+        if number.isdigit():
+            return int(number)
+
+        print("Please enter a number.")
+
+
 def press_enter():
     input("\nPress Enter to continue...")
 
 
-# Main menu
+def lesson_finished():
+
+    while True:
+
+        print("""
+            1. Repeat lesson
+            2. Main menu
+            3. Exit
+        """)
+
+        option = input("\nEnter a number: ")
+
+        if option == "1":
+            return "repeat"
+
+        elif option == "2":
+            return "menu"
+
+        elif option == "3":
+            return "exit"
+
+        else:
+            print("\nSelect from given option")
+
+
+def start_lesson(lesson):
+
+    while True:
+        lesson()
+
+        To_do = lesson_finished()
+
+        if To_do == "repeat":
+            continue
+
+        elif To_do == "menu":
+            return True
+
+        elif To_do == "exit":
+            return False
+
+
 def main_menu():
-    print("\n==========================================")
-    print("       PYTHON ALGORITHM LEARNING")
-    print("==========================================")
 
-    print("\n1. GCD")
-    print("2. Prime Number")
-    print("3. Fibonacci Series")
-    print("4. Prime Factorization")
-    print("5. Array Reversal")
-    print("6. Array Occurrence Counting")
-    print("7. Kth Smallest Element")
-    print("8. Exit")
+    programming = True
+
+    while programming:
+
+        print("""
+        ==========================================
+              PYTHON ALGORITHM LEARNING
+        ==========================================
+
+        1. GCD
+        2. Prime Number
+        3. Fibonacci Series
+        4. Prime Factorization
+        5. Array Reversal
+        6. Array Occurrence Counting
+        7. Kth Smallest Element
+        8. Exit
+        """)
+
+        option = option_input("Enter your requirement: ")
+
+        if option == 1:
+            programming = start_lesson(gcd)
+
+        elif option == 2:
+            programming = start_lesson(prime_num)
+
+        elif option == 3:
+            programming = start_lesson(fibonacci)
+
+        elif option == 4:
+            programming = start_lesson(prime_factor)
+
+        elif option == 5:
+            programming = start_lesson(reversal)
+
+        elif option == 6:
+            programming = start_lesson(counting)
+
+        elif option == 7:
+            programming = start_lesson(kth)
+
+        elif option == 8:
+            print("""
+            Thank you for joining us.
+
+            Keep Learning and Enjoying
+            """)
+            programming = False
+
+        else:
+            print("\nPlease enter a number from 1 to 8.")
 
 
-# GCD
-def run_gcd():
-    print("\n================================")
+def gcd():
+
     print("             GCD")
-    print("================================")
 
-    first_number = get_number("Enter first number: ")
-    second_number = get_number("Enter second number: ")
+    fst = option_input("Enter first number: ")
+    sec = option_input("Enter second number: ")
 
     print("\nStarting GCD algorithm...")
     press_enter()
 
-    result = gcd_learning(first_number, second_number)
+    result = gcd_learning(fst, sec)
 
     print("\nResult:")
     print("GCD =", result)
 
 
-# Prime number
-def run_prime():
-    print("\n================================")
-    print("         PRIME NUMBER")
-    print("================================")
+def prime_num():
 
-    number = get_number("Enter a number: ")
+    print("         PRIME NUMBER")
+
+    number = option_input("Enter a number: ")
 
     print("\nStarting prime number algorithm...")
     press_enter()
@@ -95,13 +173,11 @@ def run_prime():
         print(number, "is not a prime number.")
 
 
-# Fibonacci series
-def run_fibonacci():
-    print("\n================================")
-    print("       FIBONACCI SERIES")
-    print("================================")
+def fibonacci():
 
-    terms = get_number("Enter number of terms: ")
+    print("       FIBONACCI SERIES")
+
+    terms = option_input("Enter number of terms: ")
 
     if terms <= 0:
         print("Number of terms should be greater than 0.")
@@ -113,13 +189,11 @@ def run_fibonacci():
     fibonacci_series(terms)
 
 
-# Prime factors
-def run_prime_factors():
-    print("\n================================")
-    print("       PRIME FACTORIZATION")
-    print("================================")
+def prime_factor():
 
-    number = get_number("Enter a number: ")
+    print("       PRIME FACTORIZATION")
+
+    number = option_input("Enter a number: ")
 
     if number <= 0:
         print("Please enter a positive number.")
@@ -133,13 +207,11 @@ def run_prime_factors():
     print("\nPrime Factors:", Factors)
 
 
-# Array reversal
-def run_array_reverse():
-    print("\n================================")
-    print("          ARRAY REVERSAL")
-    print("================================")
+def reversal():
 
-    numbers = get_array()
+    print("          ARRAY REVERSAL")
+
+    numbers = list_of_values()
 
     print("\nOriginal array:", numbers)
 
@@ -151,17 +223,15 @@ def run_array_reverse():
     print("\nReversed array:", result)
 
 
-# Array occurrence count
-def run_array_count():
-    print("\n================================")
-    print("      ARRAY OCCURRENCE COUNT")
-    print("================================")
+def counting():
 
-    numbers = get_array()
+    print("      ARRAY OCCURRENCE COUNT")
+
+    numbers = list_of_values()
 
     print("\nArray:", numbers)
 
-    element = get_number("Enter element to count: ")
+    element = option_input("Enter element to count: ")
 
     print("\nStarting counting...")
     press_enter()
@@ -172,112 +242,19 @@ def run_array_count():
     print(element, "occurs", result, "time(s).")
 
 
-# Kth smallest element
-def run_kth_smallest():
-    print("\n================================")
-    print("       KTH SMALLEST ELEMENT")
-    print("================================")
+def kth():
 
-    numbers = get_array()
+    print("       KTH SMALLEST ELEMENT")
+
+    numbers = list_of_values()
 
     print("\nArray:", numbers)
 
     while True:
-        k = get_number("Enter the value of K: ")
+
+        k = option_input("Enter the value of K: ")
 
         if 1 <= k <= len(numbers):
             break
 
-        print("K should be between 1 and", len(numbers))
-
-    print("\nStarting Kth smallest algorithm...")
-    press_enter()
-
-    result = kth_smallest(numbers, k)
-
-    print("\nResult:")
-    print("Kth smallest element =", result)
-
-
-# After a lesson
-def lesson_finished():
-    while True:
-        print("\n================================")
-        print("       LESSON COMPLETED")
-        print("================================")
-
-        print("\n1. Repeat lesson")
-        print("2. Main menu")
-        print("3. Exit")
-
-        choice = input("\nEnter choice: ")
-
-        if choice == "1":
-            return "repeat"
-
-        if choice == "2":
-            return "menu"
-
-        if choice == "3":
-            return "exit"
-
-        print("Please enter 1, 2 or 3.")
-
-
-# Controls repeat, menu and exit
-def run_lesson(lesson):
-    while True:
-        lesson()
-
-        result = lesson_finished()
-
-        if result == "repeat":
-            continue
-
-        if result == "menu":
-            return True
-
-        if result == "exit":
-            return False
-
-
-# Main program
-program_running = True
-
-while program_running:
-    main_menu()
-
-    choice = input("\nEnter your choice: ")
-
-    if choice == "1":
-        program_running = run_lesson(run_gcd)
-
-    elif choice == "2":
-        program_running = run_lesson(run_prime)
-
-    elif choice == "3":
-        program_running = run_lesson(run_fibonacci)
-
-    elif choice == "4":
-        program_running = run_lesson(run_prime_factors)
-
-    elif choice == "5":
-        program_running = run_lesson(run_array_reverse)
-
-    elif choice == "6":
-        program_running = run_lesson(run_array_count)
-
-    elif choice == "7":
-        program_running = run_lesson(run_kth_smallest)
-
-    elif choice == "8":
-        print("\nThank you for learning.")
-        print("Keep practicing!")
-
-        program_running = False
-
-    else:
-        print("\nPlease enter a choice from 1 to 8.")
-
-
-print("\nProgram ended.")
+        print("K should
