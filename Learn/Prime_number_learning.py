@@ -1,35 +1,34 @@
-# Prime Number Learning Program
 
-import math
+def gcd_learning(a, b):
+
+    if a < b:
+        a, b = b, a
+
+    print(f"""
+        Finding gcd {a} , {b} 
+        FACT: In Python, the remainder is calculated using the modulus operator '%'.
+    """)
+
+    step=1
+    
+    while b != 0:
+
+        quotient = a // b
+        remainder = a % b
+
+        print("Step", step, ":", a, "=", b, "*", quotient, "+", remainder)
 
 
-def check_prime(number):
 
-    print("Checking number:", number)
+        print("Here the remainder is:", remainder)
 
-    if number <= 1:
-        print(number, "is NOT a prime number")
-        return
+        input("Press Enter for the next step...")
 
-    square_root = int(math.sqrt(number))
+        a = b
+        b = remainder
 
-    print("Square root of", number, "is", square_root)
+        step += 1
 
-    for i in range(2, square_root + 1):
+    print("Final result: gcd =", a)
 
-        print("Checking:", number, "%", i)
-
-        if number % i == 0:
-
-            print(number, "is divisible by", i)
-            print(number, "is NOT a prime number")
-
-            input("Press Enter to exit...")
-            return
-
-        print(number, "is NOT divisible by", i)
-
-        input("Press Enter to check the next number...")
-
-    print(number, "was not divisible by any number")
-    print(number, "is a PRIME number")
+    return a
