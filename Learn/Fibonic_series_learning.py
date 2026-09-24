@@ -1,4 +1,3 @@
-# Fibonacci Series
 
 def fibonacci_series(terms):
 
@@ -15,12 +14,16 @@ def fibonacci_series(terms):
 
         elif i == 1:
             print("Number:", b)
+            input("\nPress Enter to continue...")
 
         else:
             c = a + b
 
-            print("Previous two numbers:", a, "+", b)
-            print("New number:", c)
+            print(f"""
+            Previous two numbers: {a} + {b})
+            New number: {c}
+            """)
+            input("\nPress Enter to continue...")
 
             a = b
             b = c
