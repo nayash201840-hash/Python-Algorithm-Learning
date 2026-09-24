@@ -257,4 +257,13 @@ def kth():
         if 1 <= k <= len(numbers):
             break
 
-        print("K should
+        print("K should be between 1 and", len(numbers))
+
+    print("\nStarting Kth smallest algorithm...")
+    press_enter()
+
+    result = kth_smallest(numbers, k)
+
+    print("\nResult:")
+    print("Kth smallest element =", result)
+```
